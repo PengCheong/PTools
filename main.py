@@ -13,17 +13,18 @@ if __name__ == '__main__':
     try:
         path = sys.argv[1]
 
-        if (not os.path.isdir(path)) or (not os.path.exists(path)):
-            print('[!] Path is invalid')
-            exit(-1)
-
-        if len(sys.argv) > 2:
+        if len(sys.argv) > 3:
             print(f"[-] Arguments error, more that 1 path given")
             exit(-1)
         else:
             print("*" * 50)
             if path in ["dl", "download"]:
                 path = config.usr_downloads
+            else:
+                if (not os.path.isdir(path)) or (not os.path.exists(path)):
+                    print('[!] Path is invalid')
+                    exit(-1)
+
 
     except IndexError:
         print(f"[-] No path given, use /download as default, continue? (y/n)")
